@@ -3,6 +3,9 @@ package pt.pa.view;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -65,6 +68,36 @@ public class FileManagerApplication extends Application{
 
         contextMenu.getItems().addAll(addItem, copyItem, renameItem, removeItem);
 
+        //Tentativa de mover
+        treeView.setCellFactory(param -> {
+            TreeCell<String> cell = new TreeCell<>();
+            cell.setOnDragDetected(event -> {
+                if(!cell.isEmpty()){
+                    Dragboard db = cell.startDragAndDrop(TransferMode.MOVE);
+                    ClipboardContent content = new ClipboardContent();
+                    content.putString(cell.getItem());
+                    db.setContent(content);
+                }
+            });
+
+            cell.setOnDragOver(event -> {
+                if(event.getGestureSource() != cell && event.getDragboard().hasString()){
+                    event.acceptTransferModes(TransferMode.MOVE);
+                }
+            });
+
+            cell.setOnDragDropped(event -> {
+                if(event.getGestureSource() != cell && event.getDragboard().hasString()){
+                    TreeItem<String> selectedItem = treeView.getSelectionModel().getSelectedItem();
+                    TreeItem<String> newParent = cell.getTreeItem();
+                    MoveController moveController = new MoveController();
+                    moveController.moveItem(selectedItem, newParent, fileManager);
+                }
+            });
+            cell.textProperty().bind(cell.itemProperty());
+            return cell;
+        });
+
         treeView.setContextMenu(contextMenu);
 
         VBox detailsPanel = new VBox();
@@ -79,7 +112,10 @@ public class FileManagerApplication extends Application{
         treeView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             DetailsController details = new DetailsController();
             details.updateDetailsPanel(detailsPanel, newValue, fileManager);
+
         });
+
+
 
         primaryStage.setScene(new Scene(borderPane, 600,450));
         primaryStage.show();
