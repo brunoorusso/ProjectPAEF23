@@ -68,7 +68,6 @@ public class FileManagerApplication extends Application{
 
         contextMenu.getItems().addAll(addItem, copyItem, renameItem, removeItem);
 
-        //Tentativa de mover
         treeView.setCellFactory(param -> {
             TreeCell<String> cell = new TreeCell<>();
             cell.setOnDragDetected(event -> {
@@ -112,7 +111,6 @@ public class FileManagerApplication extends Application{
         treeView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             DetailsController details = new DetailsController();
             details.updateDetailsPanel(detailsPanel, newValue, fileManager);
-
         });
 
 

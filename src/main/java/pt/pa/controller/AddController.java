@@ -30,8 +30,6 @@ public class AddController {
                             if(!newContent.isEmpty()){
                                 File newFile = fileManager.createFile(selectedFolder, new File(selectedFolder, newFolderName, newContent));
                                 addItemToTree(selectedItem, newFile.getName());
-                                System.out.println("Criação -> " + newFile.getCreationDate());
-                                System.out.println("Bloqueado? -> " + newFile.isLocked());
                             }
                         });
 
