@@ -81,7 +81,6 @@ public class FileManagerApplication extends Application{
             details.updateDetailsPanel(detailsPanel, newValue, fileManager);
         });
 
-
         primaryStage.setScene(new Scene(borderPane, 600,450));
         primaryStage.show();
     }
