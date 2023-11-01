@@ -8,23 +8,32 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class FileManagerTest {
     FileManager fileManager;
+    Folder rootFolder;
 
     @BeforeEach
     void setUp(){
         this.fileManager = new FileManager();
+        rootFolder = fileManager.createRootFolder();
     }
 
     @Test
     @DisplayName("Check get root folder")
     void checkGetRootFolder(){
-        Folder rootFolder = fileManager.createRootFolder();
         assertTrue(fileManager.getRoot() != null);
     }
 
     @Test
     @DisplayName("Check create root folder")
     void checkCreateRootElement(){
-        Folder rootFolder = fileManager.createRootFolder();
         assertEquals(rootFolder.getName(), fileManager.getRoot().getName());
     }
+
+    @Test
+    @DisplayName("Check create folder")
+    void checkCreateFolder(){
+        Folder testFolder = fileManager.createFolder(rootFolder, new Folder(rootFolder, "Teste"));
+        assertEquals(fileManager.getElementByName(testFolder.getName()).getName(), "Teste");
+    }
+
+
 }
