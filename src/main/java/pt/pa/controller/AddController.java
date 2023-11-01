@@ -34,6 +34,7 @@ public class AddController {
                         });
 
                     }else{
+                        //fileManager.createMemento();
                         Folder newFolder = fileManager.createFolder(selectedFolder, new Folder(selectedFolder, newFolderName));
                         addItemToTree(selectedItem, newFolder.getName());
                     }

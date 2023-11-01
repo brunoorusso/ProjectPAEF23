@@ -20,7 +20,6 @@ public class MoveController {
                 if (originalParent != null) {
                     originalParent.getChildren().remove(selectedItem);
                     newParent.getChildren().add(selectedItem);
-                    // Certifique-se de que a estrutura da árvore seja atualizada corretamente
                     fileManager.moveElement(selectedElement, newParentElement);
                 }
             }

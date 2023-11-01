@@ -1,12 +1,16 @@
 package pt.pa.controller;
 
+import javafx.scene.control.TreeItem;
 import pt.pa.adts.TreeLinked;
-import pt.pa.model.Element;
-import pt.pa.model.File;
-import pt.pa.model.Folder;
+import pt.pa.model.*;
+
+import javax.swing.tree.TreeNode;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FileManager{
     TreeLinked<Element> treeElements = new TreeLinked<>();
+    private List<Memento> mementos = new ArrayList<>();
 
     public TreeLinked<Element> getTreeElements(){
         return treeElements;
@@ -35,13 +39,12 @@ public class FileManager{
 
     public Element getElementByName(String name){
         for(Element element : treeElements.elements()){
-            if(name == element.getName()){
+            if(element.getName().equals(name)){
                 return element;
             }
         }
         return null;
     }
-
 
     public File createFile(Folder rootFolder, File newFile){
         if(rootFolder != null && newFile != null){
@@ -67,9 +70,20 @@ public class FileManager{
         if(element != null){
             treeElements.remove(treeElements.getPosition(element));
         }
-
     }
 
+    public void createMemento() {
+        Memento memento = new Memento(treeElements);
+        mementos.add(memento);
+        System.out.println("n " + mementos.size());
+    }
 
-
+    public void restoreMemento() {
+        if (!mementos.isEmpty()) {
+            Memento memento = mementos.get(mementos.size() - 1);
+            treeElements = new TreeLinked(memento.getTreeState());
+            mementos.remove(memento);
+            System.out.println("oi            "  + mementos.size());
+        }
+    }
 }

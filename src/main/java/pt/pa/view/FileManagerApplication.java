@@ -3,38 +3,59 @@ package pt.pa.view;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import pt.pa.controller.*;
-import pt.pa.model.Element;
+import pt.pa.model.CustomTreeItem;
 import pt.pa.model.Folder;
 
-import java.time.LocalDateTime;
+import javafx.scene.image.Image;
+
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 public class FileManagerApplication extends Application{
 
     public void start(Stage primaryStage) {
         primaryStage.setTitle("File Explorer");
 
+
+        //Image folderImg = new Image("/resources/folder.png");
+
         FileManager fileManager = new FileManager();
         Folder root = fileManager.createRootFolder();
+
         //Criar Root Folder
         TreeItem<String> rootItem = new TreeItem(root.getName());
+        //CustomTreeItem  rootTest = new CustomTreeItem(root.getName(), folderImg);
         //Criar TreeView
         TreeView<String> treeView = new TreeView(rootItem);
-        //Update Details
+        //TreeView<CustomTreeItem> newTree = new TreeView(rootTest);
+
 
         //MenuTOP -> adaptar posteriormente
-        Button statsButton = new Button("Estatísticas");
+        /*Button statsButton = new Button("UNDO");
         statsButton.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
         statsButton.setOnAction(event -> {
-            openStatsView();
-        });
+            //openStatsView();
+            fileManager.restoreMemento();
+        });*/
+
+        MenuBar menuBar = new MenuBar();
+
+        Menu statsMenu = new Menu("Estatísticas");
+        MenuItem generalItem = new MenuItem("Gerais");
+        MenuItem graphItem = new MenuItem("Gráficos");
+        generalItem.setOnAction(e -> openStatsView());
+        statsMenu.getItems().addAll(generalItem, graphItem);
+        menuBar.getMenus().addAll(statsMenu);
 
         //Context Menu
         ContextMenu contextMenu = new ContextMenu();
@@ -57,6 +78,9 @@ public class FileManagerApplication extends Application{
         });
 
         copyItem.setOnAction(event -> {
+            TreeItem<String> selectedItem = treeView.getSelectionModel().getSelectedItem();
+            CopyController copyController = new CopyController();
+            copyController.copyElement(selectedItem, fileManager);
 
         });
 
@@ -104,7 +128,7 @@ public class FileManagerApplication extends Application{
         detailsPanel.setStyle("-fx-background-color: lightgray;");
 
         BorderPane borderPane = new BorderPane();
-        borderPane.setTop(statsButton);
+        borderPane.setTop(menuBar);
         borderPane.setCenter(treeView);
         borderPane.setBottom(detailsPanel);
 
@@ -112,8 +136,6 @@ public class FileManagerApplication extends Application{
             DetailsController details = new DetailsController();
             details.updateDetailsPanel(detailsPanel, newValue, fileManager);
         });
-
-
 
         primaryStage.setScene(new Scene(borderPane, 600,450));
         primaryStage.show();
