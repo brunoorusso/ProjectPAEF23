@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Lab1Template" />
         <module name="ProjectPAEF23-main" />
+        <module name="ProjectPAEF23" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

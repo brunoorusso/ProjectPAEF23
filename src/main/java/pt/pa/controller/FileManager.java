@@ -37,6 +37,15 @@ public class FileManager{
         return null;
     }
 
+    public boolean existsElement(Element element){
+        for(Element el : treeElements.elements()){
+            if(el.getName().equals(element.getName())){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public Element getElementByName(String name){
         for(Element element : treeElements.elements()){
             if(element.getName().equals(name)){
