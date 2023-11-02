@@ -84,7 +84,6 @@ public class FileManager{
     public void createMemento() {
         Memento memento = new Memento(treeElements);
         mementos.add(memento);
-        System.out.println("n " + mementos.size());
     }
 
     public void restoreMemento() {
@@ -92,7 +91,6 @@ public class FileManager{
             Memento memento = mementos.get(mementos.size() - 1);
             treeElements = new TreeLinked(memento.getTreeState());
             mementos.remove(memento);
-            System.out.println("oi            "  + mementos.size());
         }
     }
 }

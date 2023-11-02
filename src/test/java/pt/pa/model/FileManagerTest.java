@@ -63,7 +63,6 @@ public class FileManagerTest {
         fileManager.replaceElement(oldFile, replaceFile);
         assertFalse(fileManager.existsElement(oldFile));
         assertTrue(fileManager.existsElement(replaceFile));
-
     }
 
     @Test

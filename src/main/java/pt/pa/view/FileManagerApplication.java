@@ -45,21 +45,28 @@ public class FileManagerApplication extends Application{
 
 
         //MenuTOP -> adaptar posteriormente
-        /*Button statsButton = new Button("UNDO");
-        statsButton.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
-        statsButton.setOnAction(event -> {
+        Button undoButton = new Button("UNDO");
+        undoButton.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
+        undoButton.setOnAction(event -> {
             //openStatsView();
-            fileManager.restoreMemento();
-        });*/
+            //fileManager.restoreMemento();
+        });
 
         MenuBar menuBar = new MenuBar();
+
+        Menu actions = new Menu("Opções");
+        MenuItem undoItem = new MenuItem("Undo");
+        undoItem.setOnAction(e -> fileManager.restoreMemento());
+        actions.getItems().add(undoItem);
 
         Menu statsMenu = new Menu("Estatísticas");
         MenuItem generalItem = new MenuItem("Gerais");
         MenuItem graphItem = new MenuItem("Gráficos");
         generalItem.setOnAction(e -> openStatsView());
+
         statsMenu.getItems().addAll(generalItem, graphItem);
-        menuBar.getMenus().addAll(statsMenu);
+
+        menuBar.getMenus().addAll(actions, statsMenu);
 
         //Context Menu
         ContextMenu contextMenu = new ContextMenu();
@@ -71,6 +78,7 @@ public class FileManagerApplication extends Application{
 
         addItem.setOnAction(event -> {
             TreeItem<String> selectedItem = treeView.getSelectionModel().getSelectedItem();
+            fileManager.createMemento();
             AddController addController = new AddController();
             addController.addItem(selectedItem, fileManager);
         });

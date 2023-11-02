@@ -2,7 +2,7 @@ package pt.pa.model;
 
 import java.util.Stack;
 
-public class Caretaker<Memento> {
+public class Caretaker {
     private Stack<Memento> mementos = new Stack<>();
 
     public void saveMemento(Memento memento) {
