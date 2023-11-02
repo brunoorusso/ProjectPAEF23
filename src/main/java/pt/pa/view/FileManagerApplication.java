@@ -13,24 +13,28 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import pt.pa.controller.*;
-import pt.pa.model.CustomTreeItem;
-import pt.pa.model.Folder;
+import pt.pa.model.*;
 
 import javafx.scene.image.Image;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.time.LocalDateTime;
 
 public class FileManagerApplication extends Application{
-
+    private VBox detailsPanel;
     public void start(Stage primaryStage) {
         primaryStage.setTitle("File Explorer");
-
-
-        //Image folderImg = new Image("/resources/folder.png");
+        detailsPanel = new VBox();
+        detailsPanel.setMinHeight(100);
+        detailsPanel.setStyle("-fx-background-color: lightgray;");
+        DetailsController detailsController = new DetailsController(detailsPanel);
+        Subject subject = new Subject();
+        subject.addObserver(detailsController);
 
         FileManager fileManager = new FileManager();
         Folder root = fileManager.createRootFolder();
+
 
         //Criar Root Folder
         TreeItem<String> rootItem = new TreeItem(root.getName());
@@ -123,18 +127,15 @@ public class FileManagerApplication extends Application{
 
         treeView.setContextMenu(contextMenu);
 
-        VBox detailsPanel = new VBox();
-        detailsPanel.setMinHeight(100);
-        detailsPanel.setStyle("-fx-background-color: lightgray;");
-
         BorderPane borderPane = new BorderPane();
         borderPane.setTop(menuBar);
         borderPane.setCenter(treeView);
         borderPane.setBottom(detailsPanel);
 
         treeView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            DetailsController details = new DetailsController();
-            details.updateDetailsPanel(detailsPanel, newValue, fileManager);
+            Element selectedElement = fileManager.getElementByName(newValue.getValue());
+            subject.setSelectedElement(selectedElement);
+
         });
 
         primaryStage.setScene(new Scene(borderPane, 600,450));
