@@ -15,12 +15,6 @@ import javafx.stage.Stage;
 import pt.pa.controller.*;
 import pt.pa.model.*;
 
-import javafx.scene.image.Image;
-
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.time.LocalDateTime;
-
 public class FileManagerApplication extends Application{
     private VBox detailsPanel;
     public void start(Stage primaryStage) {
@@ -93,7 +87,6 @@ public class FileManagerApplication extends Application{
             TreeItem<String> selectedItem = treeView.getSelectionModel().getSelectedItem();
             CopyController copyController = new CopyController();
             copyController.copyElement(selectedItem, fileManager);
-
         });
 
         renameItem.setOnAction(event -> {

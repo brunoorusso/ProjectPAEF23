@@ -1,11 +1,8 @@
 package pt.pa.model;
 
-import pt.pa.adts.Position;
-import pt.pa.adts.TreeLinked;
-
 import java.time.LocalDateTime;
 
-public class Element {
+public class Element{
     protected String name;
     protected LocalDateTime creationDate;
     protected LocalDateTime modifiedDate;

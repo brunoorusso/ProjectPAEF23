@@ -3,8 +3,10 @@ package pt.pa.controller;
 import javafx.scene.control.TreeItem;
 import pt.pa.adts.TreeLinked;
 import pt.pa.model.*;
+import pt.pa.model.File;
 
 import javax.swing.tree.TreeNode;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
