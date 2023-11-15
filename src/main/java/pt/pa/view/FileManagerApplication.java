@@ -15,6 +15,8 @@ import javafx.stage.Stage;
 import pt.pa.controller.*;
 import pt.pa.model.*;
 
+import java.util.Map;
+
 public class FileManagerApplication extends Application{
     private VBox detailsPanel;
     public void start(Stage primaryStage) {
@@ -155,9 +157,10 @@ public class FileManagerApplication extends Application{
         dialog.setTitle("Selecione o ano");
         dialog.setHeaderText("Ano:");
 
-        // Mostra o diálogo e aguarda até que o usuário insira algo ou cancele
         dialog.showAndWait().ifPresent(result -> {
-            barChartView.display();
+            Map<String, Integer> createdData = fileManager.getElementsByYear(Integer.parseInt(result), Element::getCreationDate);
+            Map<String, Integer> modifiedData = fileManager.getElementsByYear(Integer.parseInt(result), Element::getModifiedDate);
+            barChartView.display(createdData, modifiedData, Integer.parseInt(result));
         });
     }
 

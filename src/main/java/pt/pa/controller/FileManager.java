@@ -7,8 +7,10 @@ import pt.pa.model.File;
 
 import javax.swing.tree.TreeNode;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.util.*;
+import java.util.function.Function;
 
 public class FileManager{
     TreeLinked<Element> treeElements = new TreeLinked<>();
@@ -80,6 +82,24 @@ public class FileManager{
             }
         }
         return false;
+    }
+
+    public Map<String, Integer> getElementsByYear(int year, Function<Element, LocalDateTime> dateExtractor) {
+        Map<String, Integer> elementsByMonth = new LinkedHashMap<>();
+
+        for (Month month : Month.values()) {
+            elementsByMonth.put(month.toString(), 0);
+        }
+
+        for (Element el : treeElements.elements()) {
+            LocalDateTime date = dateExtractor.apply(el);
+
+            if (date.getYear() == year) {
+                String monthKey = date.getMonth().toString();
+                elementsByMonth.put(monthKey, elementsByMonth.get(monthKey) + 1);
+            }
+        }
+        return elementsByMonth;
     }
 
     public Element getElementByName(String name){

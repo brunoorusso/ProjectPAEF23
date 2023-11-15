@@ -5,8 +5,10 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import pt.pa.controller.FileManager;
+import java.util.Map;
 
 public class BarChartView {
 
@@ -16,46 +18,39 @@ public class BarChartView {
         this.fileManager = fileManager;
     }
 
-    public static void display(){
+    public static void display(Map<String, Integer> createdData, Map<String, Integer> modifiedData, int year){
         Stage stage = new Stage();
         stage.setTitle("Estatísticas");
-        stage.setTitle("Estatísticas");
+
+        BarChart<String, Number> createdBarChart = createBarChart(createdData, "Número de Pastas/Ficheiros criados por mês - " + year);
+        BarChart<String, Number> modifiedBarChart = createBarChart(modifiedData, "Número de Pastas/Ficheiros modificados por mês - " + year);
+
+        VBox vbox = new VBox(createdBarChart, modifiedBarChart);
+
+        Scene scene = new Scene(vbox, 1200, 800);
+
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    private static BarChart<String, Number> createBarChart(Map<String, Integer> data, String title) {
         XYChart.Series<String, Number> series = new XYChart.Series<>();
-        series.getData().add(new XYChart.Data<>("Janeiro", 20));
-        series.getData().add(new XYChart.Data<>("Fevereiro", 40));
-        series.getData().add(new XYChart.Data<>("Março", 15));
-        series.getData().add(new XYChart.Data<>("Abril", 30));
-        series.getData().add(new XYChart.Data<>("Maio", 30));
-        series.getData().add(new XYChart.Data<>("Junho", 30));
-        series.getData().add(new XYChart.Data<>("Julho", 30));
-        series.getData().add(new XYChart.Data<>("Agosto", 30));
-        series.getData().add(new XYChart.Data<>("Setembro", 30));
-        series.getData().add(new XYChart.Data<>("Outubro", 30));
-        series.getData().add(new XYChart.Data<>("Novembro", 30));
-        series.getData().add(new XYChart.Data<>("Dezembro", 30));
+        for (Map.Entry<String, Integer> entry : data.entrySet()) {
+            series.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue()));
+        }
 
-
-        // Criar o eixo X (categórico)
         CategoryAxis xAxis = new CategoryAxis();
         xAxis.setLabel("Meses");
 
-        // Criar o eixo Y (numérico)
         NumberAxis yAxis = new NumberAxis();
         yAxis.setLabel("Número");
+        yAxis.setForceZeroInRange(false);
 
-        // Criar o gráfico de barras
         BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
-        barChart.setTitle("Número de Pastas/Ficheiros criados por mês");
+        barChart.setTitle(title);
         barChart.getData().add(series);
+        barChart.setLegendVisible(false);
 
-        // Criar a cena
-        Scene scene = new Scene(barChart, 600, 400);
-
-        // Configurar o palco
-        stage.setTitle("JavaFX Bar Chart Example");
-        stage.setScene(scene);
-
-        // Exibir o palco
-        stage.show();
+        return barChart;
     }
 }
