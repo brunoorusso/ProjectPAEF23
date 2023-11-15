@@ -6,7 +6,7 @@ public class File extends Element{
 
     private Folder root;
     private String content;
-    private long size;
+    private Integer size;
 
     public File(Folder root, String name, String content) {
         super(name, root);
@@ -23,11 +23,11 @@ public class File extends Element{
         this.content = content;
     }
 
-    public long getSize() {
+    public int getSize() {
         return size;
     }
 
-    public void setSize(long size) {
+    public void setSize(int size) {
         this.size = size;
     }
 

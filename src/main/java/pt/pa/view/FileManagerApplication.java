@@ -56,7 +56,8 @@ public class FileManagerApplication extends Application{
         Menu statsMenu = new Menu("Estatísticas");
         MenuItem generalItem = new MenuItem("Gerais");
         MenuItem graphItem = new MenuItem("Gráficos");
-        generalItem.setOnAction(e -> openStatsView());
+        generalItem.setOnAction(e -> openStatsView(fileManager));
+        graphItem.setOnAction(e -> openBarChartView(fileManager));
 
         statsMenu.getItems().addAll(generalItem, graphItem);
 
@@ -143,8 +144,21 @@ public class FileManagerApplication extends Application{
         primaryStage.show();
     }
 
-    private void openStatsView() {
-        StatsView.display();
+    private void openStatsView(FileManager fileManager) {
+        StatsView statsView = new StatsView(fileManager);
+        statsView.display();
+    }
+
+    private void openBarChartView(FileManager fileManager){
+        BarChartView barChartView = new BarChartView(fileManager);
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Selecione o ano");
+        dialog.setHeaderText("Ano:");
+
+        // Mostra o diálogo e aguarda até que o usuário insira algo ou cancele
+        dialog.showAndWait().ifPresent(result -> {
+            barChartView.display();
+        });
     }
 
     public static void main(String[] args) {

@@ -18,6 +18,40 @@ public class FileManager{
         return treeElements;
     }
 
+    public Integer getNumberOfFolders(){
+        Integer number = 0;
+        for(Element el : treeElements.elements()){
+            if(el instanceof Folder){
+                number+=1;
+            }
+        }
+        return number;
+    }
+
+    public Integer getNumberOfFiles(){
+        Integer number = 0;
+        for(Element el : treeElements.elements()){
+            if(el instanceof File){
+                number+=1;
+            }
+        }
+        return number;
+    }
+
+    public Integer getTreeHeight(){
+        return treeElements.height();
+    }
+
+    public int getFilesSpace(){
+        int space = 0;
+        for(Element el : treeElements.elements()){
+            if(el instanceof File){
+                space += ((File) el).getSize();
+            }
+        }
+        return space;
+    }
+
     public Element getRoot(){
         return treeElements.root().element();
     }
