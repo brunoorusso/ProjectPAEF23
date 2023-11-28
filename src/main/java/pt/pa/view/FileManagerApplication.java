@@ -34,10 +34,8 @@ public class FileManagerApplication extends Application{
 
         //Criar Root Folder
         TreeItem<String> rootItem = new TreeItem(root.getName());
-        //CustomTreeItem  rootTest = new CustomTreeItem(root.getName(), folderImg);
         //Criar TreeView
         TreeView<String> treeView = new TreeView(rootItem);
-        //TreeView<CustomTreeItem> newTree = new TreeView(rootTest);
 
 
         //MenuTOP -> adaptar posteriormente
