@@ -35,7 +35,7 @@ public class FileManagerApplication extends Application{
      * @param primaryStage O palco principal da aplicação.
      */
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("File Explorer");
+        primaryStage.setTitle("File System");
         detailsPanel = new VBox();
         detailsPanel.setMinHeight(100);
         detailsPanel.setStyle("-fx-background-color: lightgray;");
