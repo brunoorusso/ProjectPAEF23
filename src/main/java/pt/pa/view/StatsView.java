@@ -36,29 +36,24 @@ public class StatsView{
         Stage stage = new Stage();
         stage.setTitle("Estatísticas");
         stage.setTitle("Estatísticas");
-        // Layout em grade para as estatísticas
         GridPane gridPane = new GridPane();
         gridPane.setHgap(10);
         gridPane.setVgap(10);
 
-        // Espaço ocupado pelos ficheiros
         Label labelSpace = new Label("Espaço ocupado pelos ficheiros:");
         Label valueSpace = new Label(fileManager.getFilesSpace() + "MB");
 
-        // Nº de pastas e nº de ficheiros
         Label labelFolders = new Label("Nº de pastas: ");
         Label valueFolders = new Label(fileManager.getNumberOfFolders().toString());
 
         Label labelFiles = new Label("Nº de ficheiros: ");
         Label valuesFiles = new Label(fileManager.getNumberOfFiles().toString());
 
-        // Profundidade
         Label labelHeight = new Label("Profundidade:");
         Label valueHeight = new Label(fileManager.getTreeHeight().toString());
 
-        // Top 10 pastas com maior número de descendentes
         Label labelTop10 = new Label("Top 10 pastas com maior número de descendentes:");
-        Label valorTop10 = new Label("Pasta 1, Pasta 2, ...");
+        Label valorTop10 = new Label("Olá" + fileManager.getTopFoldersWithDescendants());
 
         gridPane.add(labelSpace, 0, 0);
         gridPane.add(valueSpace, 1, 0);

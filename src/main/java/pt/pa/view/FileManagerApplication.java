@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
@@ -45,8 +46,7 @@ public class FileManagerApplication extends Application{
         FileManager fileManager = new FileManager();
         Folder root = fileManager.createRootFolder();
 
-
-        TreeItem<String> rootItem = new TreeItem(root.getName());
+        TreeItem<String> rootItem = new TreeItem<>(root.getName());
         TreeView<String> treeView = new TreeView(rootItem);
 
         Button undoButton = new Button("UNDO");
@@ -78,6 +78,7 @@ public class FileManagerApplication extends Application{
         MenuItem removeItem = new MenuItem("Remover");
         MenuItem copyItem = new MenuItem("Copiar");
         MenuItem renameItem = new MenuItem("Renomear");
+
 
         addItem.setOnAction(event -> {
             TreeItem<String> selectedItem = treeView.getSelectionModel().getSelectedItem();

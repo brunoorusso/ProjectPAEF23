@@ -7,6 +7,7 @@ import pt.pa.model.File;
 
 import javax.swing.tree.TreeNode;
 import java.io.*;
+import java.sql.Array;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.*;
@@ -233,6 +234,24 @@ public class FileManager{
         if(element != null){
             treeElements.remove(treeElements.getPosition(element));
         }
+    }
+
+    public List<Folder> getTopFoldersWithDescendants(){
+        List<Folder> allFolders = getAllFolders();
+        return null;
+    }
+
+    /**
+     * Retorna todos os elementos do tipo Folder existentes na árvore.
+     */
+    private List<Folder> getAllFolders() {
+        List<Folder> allFolders = new ArrayList<>();
+        for(Element el : treeElements.elements()){
+            if(el instanceof Folder){
+                allFolders.add((Folder) el);
+            }
+        }
+        return allFolders;
     }
 
     /**
