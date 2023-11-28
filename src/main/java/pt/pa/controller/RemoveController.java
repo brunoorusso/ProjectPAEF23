@@ -9,7 +9,18 @@ import javafx.stage.Modality;
 import javafx.stage.StageStyle;
 import pt.pa.model.Element;
 
+/**
+ * A classe RemoveController fornece métodos para remover um elemento e todos os seus filhos da árvore de elementos.
+ */
 public class RemoveController {
+
+    /**
+     * Remove um item representado por um TreeItem da árvore de elementos.
+     * Exibe um diálogo de confirmação antes de efetuar a remoção.
+     *
+     * @param selectedItem O TreeItem do item a ser removido.
+     * @param fileManager  O FileManager que efetua a gestão da estrutura da árvore de elementos.
+     */
     public void removeItem(TreeItem<String> selectedItem, FileManager fileManager){
         if(selectedItem != null){
             Alert dialog = new Alert(AlertType.CONFIRMATION);

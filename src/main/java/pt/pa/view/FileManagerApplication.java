@@ -17,8 +17,22 @@ import pt.pa.model.*;
 
 import java.util.Map;
 
+/**
+ * Classe FileManagerApplication representa a aplicação principal do FileSystem.
+ * Utiliza a biblioteca JavaFX para criar uma interface gráfica que permite interações com o FileSystem.
+ */
 public class FileManagerApplication extends Application{
+
+    /**
+     * O painel de detalhes exibido na parte inferior da interface.
+     */
     private VBox detailsPanel;
+
+    /**
+     * Inicia a aplicação, criando a interface gráfica e configurando os controladores de eventos.
+     *
+     * @param primaryStage O palco principal da aplicação.
+     */
     public void start(Stage primaryStage) {
         primaryStage.setTitle("File Explorer");
         detailsPanel = new VBox();
@@ -32,17 +46,12 @@ public class FileManagerApplication extends Application{
         Folder root = fileManager.createRootFolder();
 
 
-        //Criar Root Folder
         TreeItem<String> rootItem = new TreeItem(root.getName());
-        //Criar TreeView
         TreeView<String> treeView = new TreeView(rootItem);
 
-
-        //MenuTOP -> adaptar posteriormente
         Button undoButton = new Button("UNDO");
         undoButton.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
         undoButton.setOnAction(event -> {
-            //openStatsView();
             //fileManager.restoreMemento();
         });
 
@@ -63,9 +72,8 @@ public class FileManagerApplication extends Application{
 
         menuBar.getMenus().addAll(actions, statsMenu);
 
-        //Context Menu
         ContextMenu contextMenu = new ContextMenu();
-        //Menu Item
+
         MenuItem addItem = new MenuItem("Adicionar");
         MenuItem removeItem = new MenuItem("Remover");
         MenuItem copyItem = new MenuItem("Copiar");
@@ -144,11 +152,21 @@ public class FileManagerApplication extends Application{
         primaryStage.show();
     }
 
+    /**
+     * Abre a visualização de estatísticas gerais.
+     *
+     * @param fileManager O file manager utilizado para obter os dados estatísticos.
+     */
     private void openStatsView(FileManager fileManager) {
         StatsView statsView = new StatsView(fileManager);
         statsView.display();
     }
 
+    /**
+     * Abre a visualização dos gráficos de barras.
+     *
+     * @param fileManager O file manager utilizado para obter os dados para os gráficos.
+     */
     private void openBarChartView(FileManager fileManager){
         BarChartView barChartView = new BarChartView(fileManager);
         TextInputDialog dialog = new TextInputDialog();

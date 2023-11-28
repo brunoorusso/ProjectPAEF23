@@ -8,13 +8,30 @@ import javafx.stage.Stage;
 import pt.pa.controller.FileManager;
 import pt.pa.model.File;
 
+/**
+ * A classe StatsView representa uma visualização de estatísticas gerais do FileSystem.
+ * Exibe diversas estatísticas, como espaço ocupado pelos arquivos, número de pastas, número de arquivos, profundidade da árvore,
+ * e as top 10 pastas com o maior número de descendentes.
+ */
 public class StatsView{
+
+    /**
+     * O file manager utilizado para obter dados estatísticos.
+     */
     private static FileManager fileManager;
 
+    /**
+     * Construtor que cria uma nova instância de StatsView.
+     *
+     * @param fileManager O file manager a ser utilizado para obter os dados estatísticos.
+     */
     public StatsView(FileManager fileManager){
         this.fileManager = fileManager;
     }
 
+    /**
+     * Exibe uma janela com as estatísticas referentes ao FileSystem.
+     */
     public static void display(){
         Stage stage = new Stage();
         stage.setTitle("Estatísticas");

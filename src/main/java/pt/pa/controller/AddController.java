@@ -5,7 +5,17 @@ import javafx.scene.control.TreeItem;
 import pt.pa.model.File;
 import pt.pa.model.Folder;
 
+/**
+ * A classe AddController fornece métodos para adicionar elementos (pastas ou ficheiros) a uma estrutura de árvore.
+ */
 public class AddController {
+
+    /**
+     * Adiciona um item (pasta ou arquivo) à estrutura de árvore com base no item selecionado e nos dados fornecidos pelo utilizador.
+     *
+     * @param selectedItem O item da árvore selecionado ao qual o novo item será adicionado como filho.
+     * @param fileManager  O file manager utilizado para criar novos elementos.
+     */
     public void addItem(TreeItem<String> selectedItem, FileManager fileManager){
         if(selectedItem != null){
             TextInputDialog dialog = new TextInputDialog();
@@ -43,6 +53,12 @@ public class AddController {
         }
     }
 
+    /**
+     * Adiciona um novo item à árvore visual na interface gráfica.
+     *
+     * @param selectedItem O item da árvore ao qual o novo item será adicionado como filho.
+     * @param itemName      O nome do novo item a ser exibido na árvore.
+     */
     private void addItemToTree(TreeItem<String> selectedItem, String itemName) {
         TreeItem<String> newItem = new TreeItem<>(itemName);
         selectedItem.getChildren().add(newItem);
