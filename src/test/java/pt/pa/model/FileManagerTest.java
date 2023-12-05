@@ -10,7 +10,7 @@ import pt.pa.model.Folder;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * A classe FileManagerTest contém testes unitários para validar o comportamento da classe FileManager.
+ * A classe FileManagerTest contem testes unitários para validar o comportamento da classe FileManager.
  */
 public class FileManagerTest {
     FileManager fileManager;

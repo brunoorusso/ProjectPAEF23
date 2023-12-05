@@ -1,10 +1,5 @@
 package pt.pa;
 
-import pt.pa.adts.TreeLinked;
-import pt.pa.controller.FileManager;
-import pt.pa.model.Element;
-import pt.pa.model.File;
-import pt.pa.model.Folder;
 import pt.pa.view.FileManagerApplication;
 
 /**
