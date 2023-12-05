@@ -3,10 +3,7 @@ package pt.pa.view;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
@@ -50,17 +47,11 @@ public class FileManagerApplication extends Application{
         TreeItem<String> rootItem = new TreeItem<>(root.getName());
         TreeView<String> treeView = new TreeView(rootItem);
 
-        Button undoButton = new Button("UNDO");
-        undoButton.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
-        undoButton.setOnAction(event -> {
-            //fileManager.restoreMemento();
-        });
-
         MenuBar menuBar = new MenuBar();
 
         Menu actions = new Menu("Opções");
         MenuItem undoItem = new MenuItem("Undo");
-        undoItem.setOnAction(e -> fileManager.restoreMemento());
+        //undoItem.setOnAction(e -> fileManager.restoreMemento());
         actions.getItems().add(undoItem);
 
         Menu statsMenu = new Menu("Estatísticas");
