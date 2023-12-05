@@ -8,15 +8,16 @@ import pt.pa.view.GenerateAlert;
 import java.time.LocalDateTime;
 
 /**
- * A classe RenameController fornece métodos para renomear um elemento na árvore de elementos.
+ * A classe RenameController fornece metodos para renomear um elemento na arvore de elementos.
+ * @author Bruno Russo 202001410
  */
 public class RenameController {
 
     /**
-     * Renomeia um item representado por um TreeItem na árvore de elementos.
+     * Renomeia um item representado por um TreeItem na arvore de elementos.
      *
      * @param selectedItem O TreeItem do item a ser renomeado.
-     * @param fileManager  O FileManager que efetua a gestão da estrutura da árvore de elementos.
+     * @param fileManager  O FileManager que efetua a gestao da estrutura da arvore de elementos.
      */
     public void renameItem(TreeItem<String> selectedItem, FileManager fileManager){
         if(selectedItem != null){

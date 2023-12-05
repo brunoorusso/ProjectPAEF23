@@ -15,34 +15,35 @@ import java.util.function.Function;
 
 
 /**
- * A classe FileManager efetua a gestão da estrutura da árvore de elementos (pastas e ficheiros) num FileSystem.
- * Fornece operações para manipular a árvore, calcular estatísticas.
+ * A classe FileManager efetua a gestao da estrutura da arvore de elementos (pastas e ficheiros) num FileSystem.
+ * Fornece operacoes para manipular a arvore, calcular estatisticas.
+ * @author Bruno Russo 202001410 & Rafael Carvalho Martins 201700039
  */
 public class FileManager{
 
     /**
-     * A estrutura da árvore que guarda os elementos do FileSystem.
+     * A estrutura da arvore que guarda os elementos do FileSystem.
      */
     TreeLinked<Element> treeElements = new TreeLinked<>();
 
     /**
-     * Lista de mementos para realizar controlo de versões.
+     * Lista de mementos para realizar controlo de versoes.
      */
     private List<Memento> mementos = new ArrayList<>();
 
     /**
-     * Obtém a estrutura da árvore que armazena os elementos do FileSystem.
+     * Obtém a estrutura da arvore que armazena os elementos do FileSystem.
      *
-     * @return A estrutura da árvore de elementos.
+     * @return A estrutura da arvore de elementos.
      */
     public TreeLinked<Element> getTreeElements(){
         return treeElements;
     }
 
     /**
-     * Obtém o número de pastas na árvore de elementos.
+     * Obtém o numero de pastas na arvore de elementos.
      *
-     * @return O número de pastas na árvore.
+     * @return O numero de pastas na arvore.
      */
     public Integer getNumberOfFolders(){
         Integer number = 0;
@@ -55,9 +56,9 @@ public class FileManager{
     }
 
     /**
-     * Obtém o número de ficheiros na árvore de elementos.
+     * Obtem o numero de ficheiros na arvore de elementos.
      *
-     * @return O número de ficheiros na árvore.
+     * @return O numero de ficheiros na arvore.
      */
     public Integer getNumberOfFiles(){
         Integer number = 0;
@@ -70,18 +71,18 @@ public class FileManager{
     }
 
     /**
-     * Obtém a altura da árvore de elementos.
+     * Obtem a altura da arvore de elementos.
      *
-     * @return A altura da árvore.
+     * @return A altura da arvore.
      */
     public Integer getTreeHeight(){
         return treeElements.height();
     }
 
     /**
-     * Obtém o espaço total ocupado pelos ficheiros na árvore de elementos.
+     * Obtem o espaco total ocupado pelos ficheiros na arvore de elementos.
      *
-     * @return O espaço total ocupado pelos ficheiros em megabytes.
+     * @return O espaco total ocupado pelos ficheiros em megabytes.
      */
     public int getFilesSpace(){
         int space = 0;
@@ -94,18 +95,18 @@ public class FileManager{
     }
 
     /**
-     * Obtém o elemento raiz da árvore.
+     * Obtem o elemento raiz da arvore.
      *
-     * @return O elemento raiz da árvore.
+     * @return O elemento raiz da arvore.
      */
     public Element getRoot(){
         return treeElements.root().element();
     }
 
     /**
-     * Cria a pasta raiz se a árvore estiver vazia.
+     * Cria a pasta raiz se a arvore estiver vazia.
      *
-     * @return A pasta raiz criada ou nulo se a árvore já contiver elementos.
+     * @return A pasta raiz criada ou nulo se a arvore já contiver elementos.
      */
     public Folder createRootFolder(){
         if(treeElements.isEmpty()){
@@ -117,11 +118,11 @@ public class FileManager{
     }
 
     /**
-     * Cria uma nova pasta na árvore de elementos.
+     * Cria uma nova pasta na arvore de elementos.
      *
-     * @param rootFolder A pasta pai onde a nova pasta será criada.
+     * @param rootFolder A pasta pai onde a nova pasta sera criada.
      * @param newFolder  A nova pasta a ser criada.
-     * @return A nova pasta criada ou nulo se os parâmetros forem inválidos.
+     * @return A nova pasta criada ou nulo se os parametros forem invalidos.
      */
     public Folder createFolder(Folder rootFolder, Folder newFolder){
         if(rootFolder != null && newFolder != null){
@@ -132,10 +133,10 @@ public class FileManager{
     }
 
     /**
-     * Verifica se um elemento com o mesmo nome já existe na árvore.
+     * Verifica se um elemento com o mesmo nome ja existe na arvore.
      *
      * @param element O elemento a ser verificado.
-     * @return true se um elemento com o mesmo nome já existe, false caso contrário.
+     * @return true se um elemento com o mesmo nome já existe, false caso contrario.
      */
     public boolean existsElement(Element element){
         for(Element el : treeElements.elements()){
@@ -147,11 +148,11 @@ public class FileManager{
     }
 
     /**
-     * Obtém estatísticas sobre a quantidade de elementos criados por mês num determinado ano.
+     * Obtem estatisticas sobre a quantidade de elementos criados por mes num determinado ano.
      *
-     * @param year          O ano para o qual se deseja obter as estatísticas.
-     * @param dateExtractor Uma função para extrair a data de criação/modificação de um elemento.
-     * @return Um mapa que contém o número de elementos criados por mês no ano especificado.
+     * @param year          O ano para o qual se deseja obter as estatisticas.
+     * @param dateExtractor Uma funcao para extrair a data de criacao/modificacao de um elemento.
+     * @return Um mapa que contem o numero de elementos criados por mes no ano especificado.
      */
     public Map<String, Integer> getElementsByYear(int year, Function<Element, LocalDateTime> dateExtractor) {
         Map<String, Integer> elementsByMonth = new LinkedHashMap<>();
@@ -175,7 +176,7 @@ public class FileManager{
      * Obtém um elemento pelo nome.
      *
      * @param name O nome do elemento a ser obtido.
-     * @return O elemento com o nome especificado ou nulo se não existir.
+     * @return O elemento com o nome especificado ou nulo se nao existir.
      */
     public Element getElementByName(String name){
         for(Element element : treeElements.elements()){
@@ -187,11 +188,11 @@ public class FileManager{
     }
 
     /**
-     * Cria um novo ficheiro na árvore de elementos.
+     * Cria um novo ficheiro na arvore de elementos.
      *
-     * @param rootFolder A pasta pai onde o novo ficheiro será criado.
+     * @param rootFolder A pasta pai onde o novo ficheiro sera criado.
      * @param newFile    O novo ficheiro a ser criado.
-     * @return O ficheiro criado ou null se os parâmetros forem inválidos.
+     * @return O ficheiro criado ou null se os parametros forem inválidos.
      */
     public File createFile(Folder rootFolder, File newFile){
         if(rootFolder != null && newFile != null){
@@ -202,7 +203,7 @@ public class FileManager{
     }
 
     /**
-     * Move um elemento na árvore para um novo local.
+     * Move um elemento na arvore para um novo local.
      *
      * @param element        O elemento a ser movido.
      * @param destinyElement O novo local para o qual o elemento será movido.
@@ -214,10 +215,10 @@ public class FileManager{
     }
 
     /**
-     * Substitui um elemento na árvore por um novo elemento.
+     * Substitui um elemento na arvore por um novo elemento.
      *
-     * @param element    O elemento a ser substituído.
-     * @param newElement O novo elemento que substituirá o elemento existente.
+     * @param element    O elemento a ser substituido.
+     * @param newElement O novo elemento que substituira o elemento existente.
      */
     public void replaceElement(Element element, Element newElement){
         if(element != null && newElement != null){
@@ -226,7 +227,7 @@ public class FileManager{
     }
 
     /**
-     * Remove um elemento da árvore.
+     * Remove um elemento da arvore.
      *
      * @param element O elemento a ser removido.
      */
@@ -255,7 +256,8 @@ public class FileManager{
     }
 
     /**
-     * Cria um memento para realizar o controlo de versões.
+     * Cria um memento para realizar o controlo de versoes.
+     * nao se encontra funcional
      */
     public void createMemento() {
         Memento memento = new Memento(treeElements);
@@ -263,8 +265,9 @@ public class FileManager{
     }
 
     /**
-     * Restaura o estado da árvore para um estado anterior utilizando um memento.
-     * Remove o último memento da lista de histórico.
+     * Restaura o estado da arvore para um estado anterior utilizando um memento.
+     * Remove o ultimo memento da lista de historico.
+     * nao se encontra funcional
      */
     public void restoreMemento() {
         if (!mementos.isEmpty()) {

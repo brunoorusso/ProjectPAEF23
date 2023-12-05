@@ -11,31 +11,32 @@ import pt.pa.controller.FileManager;
 import java.util.Map;
 
 /**
- * Classe BarChartView representa uma visualização de gráfico de barras para fins estatísticos.
- * Recorre à biblioteca JavaFX para criar gráficos de barras com base nos dados fornecidos.
+ * Classe BarChartView representa uma visualizacao de grafico de barras para fins estatísticos.
+ * Recorre a biblioteca JavaFX para criar graficos de barras com base nos dados fornecidos.
+ * @author Bruno Russo 202001410
  */
 public class BarChartView {
 
     /**
-     * Instância de File Manager utilizada para obter dados para o gráfico.
+     * Instância de File Manager utilizada para obter dados para o grafico.
      */
     private static FileManager fileManager;
 
     /**
-     * Construtor que cria uma nova instância de BarChartView.
+     * Construtor que cria uma nova instancia de BarChartView.
      *
-     * @param fileManager file manager utilizado para obter dados para o gráfico.
+     * @param fileManager file manager utilizado para obter dados para o grafico.
      */
     public BarChartView(FileManager fileManager){
         this.fileManager = fileManager;
     }
 
     /**
-     * Exibe um gráfico de barras com base nos dados fornecidos.
+     * Exibe um grafico de barras com base nos dados fornecidos.
      *
-     * @param createdData  Mapa com a informação dos dados de criação (mês -> quantidade).
-     * @param modifiedData Mapa com a informação dos dados de modificação (mês -> quantidade).
-     * @param year         O ano para o qual as estatísticas serão exibidas.
+     * @param createdData  Mapa com a informacao dos dados de criacao (mes -> quantidade).
+     * @param modifiedData Mapa com a informacao dos dados de modificacao (mes -> quantidade).
+     * @param year         O ano para o qual as estatisticas serao exibidas.
      */
     public static void display(Map<String, Integer> createdData, Map<String, Integer> modifiedData, int year){
         Stage stage = new Stage();
@@ -53,10 +54,10 @@ public class BarChartView {
     }
 
     /**
-     * Cria um gráfico de barras com base nos dados fornecidos.
+     * Cria um grafico de barras com base nos dados fornecidos.
      *
-     * @param data  Mapa com a informação dos dados para o gráfico (chave -> valor).
-     * @param title Título do gráfico.
+     * @param data  Mapa com a informacao dos dados para o grafico (chave -> valor).
+     * @param title Título do grafico.
      * @return Um objeto BarChart configurado com os dados fornecidos.
      */
     private static BarChart<String, Number> createBarChart(Map<String, Integer> data, String title) {

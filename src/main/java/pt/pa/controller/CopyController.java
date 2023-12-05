@@ -7,14 +7,15 @@ import pt.pa.model.Folder;
 import pt.pa.view.GenerateAlert;
 
 /**
- * A classe CopyController fornece métodos para copiar elementos (pastas ou ficheiros) em uma estrutura de árvore.
+ * A classe CopyController fornece metodos para copiar elementos (pastas ou ficheiros) em uma estrutura de arvore.
+ * @author Bruno Russo 202001410
  */
 public class CopyController {
     /**
-     * Copia um elemento (pasta ou ficheiro) na estrutura de árvore com base no item selecionado.
+     * Copia um elemento (pasta ou ficheiro) na estrutura de arvore com base no item selecionado.
      *
-     * @param selectedItem O item da árvore selecionado que será copiado.
-     * @param fileManager  O file manager utilizado para criar a cópia do elemento.
+     * @param selectedItem O item da arvore selecionado que sera copiado.
+     * @param fileManager  O file manager utilizado para criar a copia do elemento.
      */
     public void copyElement(TreeItem<String> selectedItem, FileManager fileManager){
         if(selectedItem != null){
@@ -36,10 +37,10 @@ public class CopyController {
     }
 
     /**
-     * Adiciona uma cópia do item à árvore visual na interface gráfica.
+     * Adiciona uma cópia do item a arvore visual na interface grafica.
      *
-     * @param selectedItem O item da árvore original que está sendo copiado.
-     * @param itemName      O nome do novo item a ser exibido na árvore.
+     * @param selectedItem O item da arvore original que esta sendo copiado.
+     * @param itemName      O nome do novo item a ser exibido na arvore.
      */
     private void addItemToTree(TreeItem<String> selectedItem, String itemName) {
         TreeItem<String> newItem = new TreeItem<>(itemName);

@@ -4,15 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A classe Subject implementa a interface Observable e atua como um objeto observável que pode ter observers registados.
- * Mantém uma lista de observers e notifica-os sobre mudanças no elemento selecionado.
+ * A classe Subject implementa a interface Observable e atua como um objeto observavel que pode ter observers registados.
+ * Mantem uma lista de observers e notifica-os sobre mudancas no elemento selecionado.
+ * @author Bruno Russo 202001410
  */
 public class Subject implements Observable{
     private List<Observer> observers;
     private Element selectedElement;
 
     /**
-     * Construtor padrão da classe Subject.
+     * Construtor padrao da classe Subject.
      * Inicializa a lista de observers como um ArrayList vazio.
      */
     public Subject() {
@@ -20,7 +21,7 @@ public class Subject implements Observable{
     }
 
     /**
-     * Adiciona um observer à lista de observers deste objeto observável.
+     * Adiciona um observer a lista de observers deste objeto observavel.
      *
      * @param observer O observer a ser adicionado.
      */
@@ -30,7 +31,7 @@ public class Subject implements Observable{
     }
 
     /**
-     * Remove um observer da lista de observers deste objeto observável.
+     * Remove um observer da lista de observers deste objeto observavel.
      *
      * @param observer O observer a ser removido.
      */
@@ -40,7 +41,7 @@ public class Subject implements Observable{
     }
 
     /**
-     * Define o elemento selecionado e notifica todos os observers registados sobre a mudança.
+     * Define o elemento selecionado e notifica todos os observers registados sobre a mudanca.
      *
      * @param selectedElement O novo elemento selecionado.
      */
@@ -50,7 +51,7 @@ public class Subject implements Observable{
     }
 
     /**
-     * Obtém o elemento atualmente selecionado.
+     * Obtem o elemento atualmente selecionado.
      *
      * @return O elemento atualmente selecionado.
      */
@@ -59,7 +60,7 @@ public class Subject implements Observable{
     }
 
     /**
-     * Notifica todos os observers registados sobre uma mudança no elemento selecionado.
+     * Notifica todos os observers registados sobre uma mudanca no elemento selecionado.
      */
     @Override
     public void notifyObservers(){

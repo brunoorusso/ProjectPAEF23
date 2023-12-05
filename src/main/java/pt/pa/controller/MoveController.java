@@ -6,16 +6,17 @@ import pt.pa.model.File;
 import pt.pa.view.GenerateAlert;
 
 /**
- * A classe MoveController fornece métodos para mover um item na estrutura da árvore de elementos.
+ * A classe MoveController fornece metodos para mover um item na estrutura da arvore de elementos.
+ * @author Bruno Russo 202001410
  */
 public class MoveController {
 
     /**
-     * Move um item representado por um TreeItem na árvore de elementos para um novo pai.
+     * Move um item representado por um TreeItem na arvore de elementos para um novo pai.
      *
      * @param selectedItem O TreeItem do item a ser movido.
      * @param newParent     O TreeItem do novo pai para o item movido.
-     * @param fileManager   O FileManager que faz a gestão da estrutura da árvore de elementos.
+     * @param fileManager   O FileManager que faz a gestao da estrutura da arvore de elementos.
      */
     public void moveItem(TreeItem<String> selectedItem, TreeItem<String> newParent, FileManager fileManager){
         if(selectedItem != null && newParent != null){

@@ -10,8 +10,8 @@ import pt.pa.model.File;
 
 /**
  * A classe StatsView representa uma visualização de estatísticas gerais do FileSystem.
- * Exibe diversas estatísticas, como espaço ocupado pelos arquivos, número de pastas, número de arquivos, profundidade da árvore,
- * e as top 10 pastas com o maior número de descendentes.
+ * Exibe diversas estatísticas, como espaço ocupado pelos arquivos, número de pastas, número de arquivos, profundidade da árvore.
+ * @author Rafael Carvalho Martins 201700039
  */
 public class StatsView{
 
@@ -52,9 +52,6 @@ public class StatsView{
         Label labelHeight = new Label("Profundidade:");
         Label valueHeight = new Label(fileManager.getTreeHeight().toString());
 
-        Label labelTop10 = new Label("Top 10 pastas com maior número de descendentes:");
-        Label valorTop10 = new Label("Olá" + fileManager.getTopFoldersWithDescendants());
-
         gridPane.add(labelSpace, 0, 0);
         gridPane.add(valueSpace, 1, 0);
         gridPane.add(labelFolders, 0, 1);
@@ -63,8 +60,6 @@ public class StatsView{
         gridPane.add(valuesFiles, 1, 2);
         gridPane.add(labelHeight, 0, 3);
         gridPane.add(valueHeight, 1, 3);
-        gridPane.add(labelTop10, 0, 4);
-        gridPane.add(valorTop10, 1, 4);
 
         Scene scene = new Scene(gridPane, 400, 200);
         stage.setScene(scene);

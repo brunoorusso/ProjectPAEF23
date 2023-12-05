@@ -19,8 +19,9 @@ import pt.pa.model.*;
 import java.util.Map;
 
 /**
- * Classe FileManagerApplication representa a aplicação principal do FileSystem.
- * Utiliza a biblioteca JavaFX para criar uma interface gráfica que permite interações com o FileSystem.
+ * Classe FileManagerApplication representa a aplicacao principal do FileSystem.
+ * Utiliza a biblioteca JavaFX para criar uma interface grafica que permite interacoes com o FileSystem.
+ * @author Bruno Russo 202001410 & Rafael Martins 201700039
  */
 public class FileManagerApplication extends Application{
 
@@ -30,9 +31,9 @@ public class FileManagerApplication extends Application{
     private VBox detailsPanel;
 
     /**
-     * Inicia a aplicação, criando a interface gráfica e configurando os controladores de eventos.
+     * Inicia a aplicacao, criando a interface grafica e configurando os controladores de eventos.
      *
-     * @param primaryStage O palco principal da aplicação.
+     * @param primaryStage O palco principal da aplicacao.
      */
     public void start(Stage primaryStage) {
         primaryStage.setTitle("File System");
@@ -154,9 +155,9 @@ public class FileManagerApplication extends Application{
     }
 
     /**
-     * Abre a visualização de estatísticas gerais.
+     * Abre a visualizacao de estatisticas gerais.
      *
-     * @param fileManager O file manager utilizado para obter os dados estatísticos.
+     * @param fileManager O file manager utilizado para obter os dados estatisticos.
      */
     private void openStatsView(FileManager fileManager) {
         StatsView statsView = new StatsView(fileManager);
@@ -164,9 +165,9 @@ public class FileManagerApplication extends Application{
     }
 
     /**
-     * Abre a visualização dos gráficos de barras.
+     * Abre a visualização dos graficos de barras.
      *
-     * @param fileManager O file manager utilizado para obter os dados para os gráficos.
+     * @param fileManager O file manager utilizado para obter os dados para os graficos.
      */
     private void openBarChartView(FileManager fileManager){
         BarChartView barChartView = new BarChartView(fileManager);

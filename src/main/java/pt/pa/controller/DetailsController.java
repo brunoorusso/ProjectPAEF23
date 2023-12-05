@@ -13,8 +13,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * A classe DetailsController é responsável por atualizar o painel de detalhes na interface gráfica com informações sobre o elemento selecionado.
- * Implementa a interface Observer para receber notificações sobre mudanças no elemento selecionado.
+ * A classe DetailsController e responsavel por atualizar o painel de detalhes na interface grafica com informacoes sobre o elemento selecionado.
+ * Implementa a interface Observer para receber notificacoes sobre mudancas no elemento selecionado.
+ * @author Bruno Russo 202001410
  */
 public class DetailsController implements Observer {
 
@@ -24,7 +25,7 @@ public class DetailsController implements Observer {
     private VBox detailsPanel;
 
     /**
-     * Construtor que cria uma nova instância de DetailsController.
+     * Construtor que cria uma nova instancia de DetailsController.
      *
      * @param detailsPanel O painel de detalhes a ser atualizado.
      */
@@ -33,9 +34,9 @@ public class DetailsController implements Observer {
     }
 
     /**
-     * Atualiza o painel de detalhes com informações sobre o elemento selecionado.
+     * Atualiza o painel de detalhes com informacoes sobre o elemento selecionado.
      *
-     * @param selectedElement O elemento selecionado cujas informações serão exibidas no painel de detalhes.
+     * @param selectedElement O elemento selecionado cujas informacoes serao exibidas no painel de detalhes.
      */
     public void updateDetails(Element selectedElement) {
         if (selectedElement != null) {
@@ -70,9 +71,9 @@ public class DetailsController implements Observer {
     }
 
     /**
-     * Método de atualização da interface Observer. Chama o método `updateDetails` com o elemento selecionado.
+     * Metodo de atualizacao da interface Observer. Chama o metodo `updateDetails` com o elemento selecionado.
      *
-     * @param selectedElement O elemento selecionado cujas informações serão exibidas no painel de detalhes.
+     * @param selectedElement O elemento selecionado cujas informacoes serao exibidas no painel de detalhes.
      */
     @Override
     public void update(Element selectedElement) {

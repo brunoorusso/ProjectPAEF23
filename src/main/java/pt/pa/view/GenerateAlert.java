@@ -3,8 +3,9 @@ package pt.pa.view;
 import javafx.scene.control.Alert;
 
 /**
- * A classe GenerateAlert fornece métodos para gerar e exibir alertas na aplicação JavaFX.
- * Permite a exibição de alertas de erro.
+ * A classe GenerateAlert fornece metodos para gerar e exibir alertas na aplicacao JavaFX.
+ * Permite a exibicao de alertas de erro.
+ * @author Rafael Carvalho Martins 201700039
  */
 public class GenerateAlert {
 

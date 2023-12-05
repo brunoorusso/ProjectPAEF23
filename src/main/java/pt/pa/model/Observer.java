@@ -1,14 +1,15 @@
 package pt.pa.model;
 
 /**
- * A interface Observer para objetos que desejam ser notificados sobre mudanças em um elemento.
+ * A interface Observer para objetos que desejam ser notificados sobre mudancas em um elemento.
+ * @author Bruno Russo 202001410
  */
 public interface Observer {
 
     /**
-     * Método chamado para notificar o Observer sobre uma mudança em um elemento.
+     * Metodo chamado para notificar o Observer sobre uma mudanca num elemento.
      *
-     * @param element O elemento que sofreu uma alteração.
+     * @param element O elemento que sofreu uma alteracao.
      */
     void update(Element element);
 }

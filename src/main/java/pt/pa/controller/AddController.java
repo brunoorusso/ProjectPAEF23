@@ -6,14 +6,15 @@ import pt.pa.model.File;
 import pt.pa.model.Folder;
 
 /**
- * A classe AddController fornece métodos para adicionar elementos (pastas ou ficheiros) a uma estrutura de árvore.
+ * A classe AddController fornece metodos para adicionar elementos (pastas ou ficheiros) a uma estrutura de arvore.
+ * @author Bruno Russo 202001410
  */
 public class AddController {
 
     /**
-     * Adiciona um item (pasta ou arquivo) à estrutura de árvore com base no item selecionado e nos dados fornecidos pelo utilizador.
+     * Adiciona um item (pasta ou arquivo) a estrutura de arvore com base no item selecionado e nos dados fornecidos pelo utilizador.
      *
-     * @param selectedItem O item da árvore selecionado ao qual o novo item será adicionado como filho.
+     * @param selectedItem O item da arvore selecionado ao qual o novo item sera adicionado como filho.
      * @param fileManager  O file manager utilizado para criar novos elementos.
      */
     public void addItem(TreeItem<String> selectedItem, FileManager fileManager){

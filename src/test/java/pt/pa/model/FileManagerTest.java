@@ -1,23 +1,22 @@
 package pt.pa.model;
 
-import jdk.jfr.Description;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pt.pa.controller.FileManager;
-import pt.pa.model.Folder;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * A classe FileManagerTest contem testes unitários para validar o comportamento da classe FileManager.
+ * @author Rafael Carvalho Martins 201700039
  */
 public class FileManagerTest {
     FileManager fileManager;
     Folder rootFolder;
 
     /**
-     * Configuração inicial para os testes, criando uma instância de FileManager e a pasta raiz (rootFolder).
+     * Configuracao inicial para os testes, criando uma instancia de FileManager e a pasta raiz (rootFolder).
      */
     @BeforeEach
     void setUp(){
@@ -26,7 +25,7 @@ public class FileManagerTest {
     }
 
     /**
-     * Testa se a pasta raiz é obtida através do método getRoot().
+     * Testa se a pasta raiz e obtida atraves do metodo getRoot().
      */
     @Test
     @DisplayName("Check get root folder")
@@ -35,7 +34,7 @@ public class FileManagerTest {
     }
 
     /**
-     * Testa se a criação da pasta raiz foi efetuada com sucesso, comparando o nome da pasta raiz com o obtido através do método getRoot().
+     * Testa se a criacao da pasta raiz foi efetuada com sucesso, comparando o nome da pasta raiz com o obtido atraves do metodo getRoot().
      */
     @Test
     @DisplayName("Check create root folder")
@@ -44,7 +43,7 @@ public class FileManagerTest {
     }
 
     /**
-     * Testa a criação de uma pasta e verifica se a mesma existe após a criação.
+     * Testa a criacao de uma pasta e verifica se a mesma existe apos a criacao.
      */
     @Test
     @DisplayName("Check create folder")
@@ -54,7 +53,7 @@ public class FileManagerTest {
     }
 
     /**
-     * Testa a criação de um ficheiro e verifica se o mesmo existe após a criação.
+     * Testa a criacao de um ficheiro e verifica se o mesmo existe apos a criacao.
      */
     @Test
     @DisplayName("Check create file")
@@ -76,7 +75,7 @@ public class FileManagerTest {
     }
 
     /**
-     * Testa a substituição de um elemento por outro e verifica se a substituição foi realizada corretamente.
+     * Testa a substituicao de um elemento por outro e verifica se a substituicao foi realizada corretamente.
      */
     @Test
     @DisplayName("Check replace element")
@@ -89,7 +88,7 @@ public class FileManagerTest {
     }
 
     /**
-     * Testa a remoção de um elemento e verifica se ele não existe após a remoção.
+     * Testa a remocao de um elemento e verifica se ele nao existe apos a remocao.
      */
     @Test
     @DisplayName("Check remove element")
